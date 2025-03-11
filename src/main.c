@@ -36,13 +36,13 @@ int main(int argc, char *argv[]) {
                 break;
             case 'l':
                 log_file = optarg;
-                if (validate_path(log_file) != 0) {
+                if (check_path(log_file) != 0) {
                     return 1;
                 }
                 break;
             case 'e':
                 error_file = optarg;
-                if (validate_path(error_file) != 0) {
+                if (check_path(error_file) != 0) {
                     return 1;
                 }
                 break;
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
                     freopen(error_file, "a", stderr);
                 }
                 fprintf(stderr, "Неизвестная опция -%c\n", optopt);
-                display_help();
+                print_help();
                 return 1;
         }
     }
@@ -64,10 +64,10 @@ int main(int argc, char *argv[]) {
         freopen(error_file, "a", stderr);
     }
 
-    if (show_help) {display_help(); return 0;}
-    if (!show_users && !show_processes) {printf("Не заданы явные аргументы \n"); display_help(); return 1;}
-    if (show_users) {display_users();}
-    if (show_processes) {display_processes();}
+    if (show_help) {print_help(); return 0;}
+    if (!show_users && !show_processes) {printf("Не заданы явные аргументы \n"); print_help(); return 1;}
+    if (show_users) {print_users();}
+    if (show_processes) {print_processes();}
 
     return 0;
 }
