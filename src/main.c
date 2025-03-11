@@ -10,7 +10,7 @@
 int main(int argc, char *argv[]) {
     char *log_file = NULL;
     char *error_file = NULL;
-    int opt;
+    int option;
     int show_users = 0, show_processes = 0, show_help = 0;
 
     static struct option long_opts[] = {
